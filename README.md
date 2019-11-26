@@ -4,9 +4,9 @@ The idea is to use DFS to traverse all the cells one by one, and while traversin
 
 If the cell represents water we will immediately return 0; otherwise If the cell represents a land, then we will mark it water (so that we don't traverse that cell again) and then traverse all its neighbours. 
 
-This way, we will be able to traverse the one entire island and since we have to find out the max area of the island, we return the sum of traversal of all the neighbours.
+This way, we will be able to traverse the one entire island and since we have to find out the area of the island, we return the sum of traversal of all the neighbours.
 
-Also we keep updating the max area, after each island's traversal.
+Also we keep updating the max area, after each island's traversal. And finally we return max area after traversing all the islands.
 
 
 ### Case 1 : When we can only move horizontally (left, right) and vertically (top, down)
