@@ -10,7 +10,7 @@ Also we keep updating the max area, after each island's traversal. And finally w
 
 
 ### Case 1 : When we can only move horizontally (left, right) and vertically (top, down)
-e.g. below 8*13 matrix have max area of 6 (note that we can only move horizontally, vertically and not diagonally)
+e.g. below 8*13 matrix have max area of 6 (note that we can only move horizontally, vertically but not diagonally)
 ![When we can only move horizontally and vertically](max-area-1.PNG?raw=true "Title")
 
 ```java
@@ -23,13 +23,13 @@ e.g. below 8*13 matrix have max area of 6 (note that we can only move horizontal
 	        int maxRegion = 0;
 	        for(int i = 0; i < rows; i++){
 	          for(int j = 0; j < columns; j++){
-                if(grid[i][j] == 1){
-                  maxRegion = Math.max(maxRegion, traverseIsland(grid, i, j));
-                }
-	            }
+		     if(grid[i][j] == 1){
+		         maxRegion = Math.max(maxRegion, traverseIsland(grid, i, j));
+		      }
+	           }
 	         }
 	        return maxRegion; 
-	  }
+    }
 
     public static int traverseIsland(int[][] grid, int row, int column){
 	 if(row < 0 || row >= grid.length || column < 0 || column >= grid[0].length || 
@@ -48,7 +48,7 @@ e.g. below 8*13 matrix have max area of 6 (note that we can only move horizontal
 ```    
 
 ### Case 2 : When we can move horizontally (left, right), vertically (top, down) and diagonally (top-right, bottom-left, bottom-right, top-left)
-e.g. below 8*13 matrix have max area of 11 (note that we can only move horizontally, vertically and not diagonally)
+e.g. below 8*13 matrix have max area of 11 (note that now we can move horizontally, vertically and diagonally)
 ![When we can move horizontally, vertically and diagonally](max-area-2.PNG?raw=true "Title")
 
 ```java
@@ -69,7 +69,7 @@ public static int maxAreaOfIsland(int[][] grid) {
 	        return maxRegion; 
 	  }
 
-	  public static int traverseIsland(int[][] grid, int row, int column){
+public static int traverseIsland(int[][] grid, int row, int column){
 	    if(row < 0 || row >= grid.length || column < 0 || column >= grid[0].length || 
 	    		grid[row][column] == 0){
 	         return 0;
