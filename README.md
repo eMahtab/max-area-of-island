@@ -29,9 +29,9 @@ e.g. below 8*13 matrix have max area of 6 (note that we can only move horizontal
 	           }
 	         }
 	        return maxRegion; 
-    }
+   }
 
-    public static int traverseIsland(int[][] grid, int row, int column){
+   public static int traverseIsland(int[][] grid, int row, int column){
 	 if(row < 0 || row >= grid.length || column < 0 || column >= grid[0].length || 
 	    		grid[row][column] == 0){
 	         return 0;
@@ -44,7 +44,7 @@ e.g. below 8*13 matrix have max area of 6 (note that we can only move horizontal
 	            traverseIsland(grid, row+1, column) +
 	            traverseIsland(grid, row-1, column);
 
-	  }
+   }
 ```    
 
 ### Case 2 : When we can move horizontally (left, right), vertically (top, down) and diagonally (top-right, bottom-left, bottom-right, top-left)
@@ -67,7 +67,7 @@ public static int maxAreaOfIsland(int[][] grid) {
 	          }
 	        }
 	        return maxRegion; 
-	  }
+ }
 
 public static int traverseIsland(int[][] grid, int row, int column){
 	    if(row < 0 || row >= grid.length || column < 0 || column >= grid[0].length || 
@@ -86,6 +86,6 @@ public static int traverseIsland(int[][] grid, int row, int column){
 	               traverseIsland(grid, row-1, column-1) +
 	               traverseIsland(grid, row+1, column+1);
 
-	  }
+}
 ```	  
 	  
