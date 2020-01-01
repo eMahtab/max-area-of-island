@@ -75,6 +75,10 @@ e.g. below 8*13 matrix have max area of 6 (note that we can only move horizontal
    }
 ```    
 
+**One very important thing to note is, in the `traverseIsland` method we are setting the current cell to '0' 
+`grid[row][column] = '0';` before traversing its neighbours, If we do that after calling the `traverseIsland` on the neighbouring cells, it can result in infinite recursion and that will result in `StackOverflowError`**
+
+
 ## Pitfall :
 
 ```java
