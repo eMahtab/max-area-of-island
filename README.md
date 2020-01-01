@@ -75,6 +75,43 @@ e.g. below 8*13 matrix have max area of 6 (note that we can only move horizontal
    }
 ```    
 
+## Pitfall :
+
+```java
+public static int maxAreaOfIsland(int[][] grid) {
+		  if(grid == null || grid.length == 0) {
+			  return 0;
+		  }
+	        int rows = grid.length;
+	        int columns = grid[0].length;
+	        int maxRegion = 0;
+	        for(int i = 0; i < rows; i++){
+	          for(int j = 0; j < columns; j++){
+	            if(grid[i][j] == 1){
+	              maxRegion = Math.max(maxRegion, 1 + traverseIsland(grid, i, j)); // <------
+	            }
+	          }
+	        }
+	        return maxRegion; 
+	  }
+
+	  public static int traverseIsland(int[][] grid, int row, int column){
+	    if(row < 0 || row >= grid.length || column < 0 || column >= grid[0].length || 
+	    		grid[row][column] == 0){
+	         return 0;
+	    }
+	    
+	    grid[row][column] = 0;
+
+	    return     traverseIsland(grid, row, column+1) +  // <-------
+	               traverseIsland(grid, row, column-1) +
+	               traverseIsland(grid, row+1, column) +
+	               traverseIsland(grid, row-1, column);
+
+	  }
+
+```
+
 ### Case 2 : When we can move horizontally (left, right), vertically (top, down) and diagonally (top-right, bottom-left, bottom-right, top-left)
 e.g. below 8*13 matrix have max area of 11 (note that now we can move horizontally, vertically and diagonally)
 ![When we can move horizontally, vertically and diagonally](max-area-2.PNG?raw=true "Title")
