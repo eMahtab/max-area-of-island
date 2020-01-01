@@ -26,6 +26,7 @@ Given the above grid, return 0.
 
 Note: The length of each dimension in the given grid does not exceed 50.
 ```
+## Approach :
 
 The idea is to use DFS to traverse all the cells one by one, and while traversing each cell, recursively traversing all the neighboring cells from that cell. 
 
