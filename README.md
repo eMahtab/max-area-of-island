@@ -111,6 +111,7 @@ public static int maxAreaOfIsland(int[][] grid) {
 	  }
 
 ```
+The above implementation is wrong and will not work.
 
 ### Case 2 : When we can move horizontally (left, right), vertically (top, down) and diagonally (top-right, bottom-left, bottom-right, top-left)
 e.g. below 8*13 matrix have max area of 11 (note that now we can move horizontally, vertically and diagonally)
