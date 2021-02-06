@@ -26,7 +26,7 @@ Given the above grid, return 0.
 
 Note: The length of each dimension in the given grid does not exceed 50.
 ```
-## Approach :
+## Approach 1 : DFS
 
 The idea is to use DFS to traverse all the cells one by one, and while traversing each cell, recursively traversing all the neighboring cells from that cell. 
 
@@ -154,5 +154,42 @@ public static int traverseIsland(int[][] grid, int row, int column){
 	               traverseIsland(grid, row+1, column+1);
 
 }
-```	  
+```
+## Approach 2 : BFS
+```java
+class Solution {
+    public int maxAreaOfIsland(int[][] grid) {
+        if(grid == null || grid.length == 0)
+            return 0;
+        
+        int maxArea = 0;
+        Queue<int[]> q = new LinkedList<>();
+        int[][] directions = {{0, 1} , {0, -1} , {-1, 0} , {1, 0}};
+        for(int i = 0; i < grid.length; i++) {
+            for(int j = 0; j < grid[0].length; j++) {
+                if(grid[i][j] == 1) {
+                    grid[i][j] = 0;
+                    int area = 0;
+                    q.add(new int[]{i,j});
+                    while(!q.isEmpty()) {
+                        area++;
+                        int[] pos = q.remove();
+                        for(int[] direction : directions) {
+                            int row = pos[0] + direction[0];
+                            int col = pos[1] + direction[1];
+                            if(row >= 0 && row < grid.length && col >= 0 
+                               && col < grid[0].length && grid[row][col] == 1) {
+                                q.add(new int[]{row, col});
+                                grid[row][col] = 0;
+                            }
+                        }
+                    }
+                   maxArea = Math.max(maxArea, area); 
+                }
+            }
+        }
+       return maxArea; 
+    }
+}
+```
 	  
